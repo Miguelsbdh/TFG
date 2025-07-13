@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@quasar/cli": "^2.4.0",
-    "axios": "^1.6.8",
-    "express": "^4.19.2"
-  }
-}
