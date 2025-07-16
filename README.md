@@ -1,6 +1,3 @@
-Claro, aquí tienes el contenido del README.md reorganizado y estructurado en secciones claras, con títulos y formato mejorado para facilitar la lectura y comprensión:
-
----
 
 # TFG: Plataforma de Autoevaluación para Bases de Datos con IA 🧠
 
