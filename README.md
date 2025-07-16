@@ -192,5 +192,3 @@ La aplicación se abrirá automáticamente en tu navegador en [http://localhost:
    Al final del test, verás un resumen de tu desempeño.
 
 ---
-
-¿Quieres que el archivo esté en español formal, informal, o prefieres otro ajuste de tono? ¿Quieres que adapte la estructura para documentación en inglés? ¡Dímelo si necesitas otra variante!
