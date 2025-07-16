@@ -53,13 +53,14 @@ Se recomienda usar XAMPP para gestionar la base de datos MySQL.
 
 2. Accede a tu gestor de base de datos (p. ej., phpMyAdmin) y ejecuta la siguiente consulta SQL para crear el usuario y darle permisos:
 
+```bash
 -- Crea el usuario para conexiones locales y desde Docker
 CREATE USER 'tfg'@'localhost' IDENTIFIED BY 'tfg';
 CREATE USER 'tfg'@'%' IDENTIFIED BY 'tfg';
 GRANT ALL PRIVILEGES ON tfg.* TO 'tfg'@'localhost';
 GRANT ALL PRIVILEGES ON tfg.* TO 'tfg'@'%';
 FLUSH PRIVILEGES;
-
+```
 3. Crea la base de datos:
 CREATE DATABASE tfg;
 
@@ -67,15 +68,16 @@ CREATE DATABASE tfg;
 
 ### 4. Instalar Dependencias
 Abre dos terminales en la raíz del proyecto (una para el backend y otra para el frontend).
-
+```bash
 Terminal Backend:
 cd servidor
 npm install
-
+```
+```bash
 Terminal Frontend:
 cd cliente
 npm install
-
+```
 ### 5. Ejecutar el Modelo LLM (Llama 3) con Docker 🐳
 Descarga el modelo llama-3-finetuned-bases-de-datos-unsloth.Q5_K_M.gguf desde Hugging Face.
 
@@ -83,26 +85,40 @@ Guarda el archivo en una carpeta de tu elección (p. ej., C:/llama.cpp/models).
 
 Ejecuta el siguiente comando en tu terminal, asegurándote de que Docker Desktop está abierto.
 
-Bash
 
+```bash
 docker run --rm -it -p 8000:8000 \
 -v /c/llama.cpp/models:/models \
 -e MODEL=/models/llama-3-finetuned-bases-de-datos-unsloth.Q5_K_M.gguf \
 ghcr.io/abetlen/llama-cpp-python:v0.3.1
 Importante: Modifica la ruta -v /c/llama.cpp/models para que apunte a la carpeta donde guardaste el modelo .gguf.
-
+```
 ### 6. Iniciar el Backend
 En la terminal del backend (/servidor), ejecuta:
 
-Bash
-
+```bash
 npm start
 El servidor se iniciará y quedará escuchando en el puerto 9001.
-
+```
 ### 7. Iniciar el Frontend
 En la terminal del frontend (/cliente), ejecuta:
 
-Bash
-
+```bash
 npm run dev
 La aplicación se abrirá automáticamente en tu navegador en http://localhost:9000.
+```
+
+📖 Manual de Usuario
+Inicio: Accede a http://localhost:9000. Verás un dashboard con tu progreso.
+
+Selecciona un Objetivo: Navega a una de las páginas de objetivos de aprendizaje.
+
+Explora Historias de Usuario: Despliega una historia para ver sus criterios de aceptación y el número de preguntas disponibles.
+
+Genera Preguntas (Opcional): Si quieres más preguntas, selecciona los criterios y pulsa "Solicitar más preguntas". La generación tarda unos 2.5 minutos por criterio. Una notificación azul 🔵 te avisará que el proceso está en marcha.
+
+Evalúate: Pulsa "Evaluar historia" para comenzar un test.
+
+Responde y Aprende: Selecciona tu respuesta y recibe feedback al instante.
+
+Revisa tus Resultados: Al final del test, verás un resumen de tu desempeño.
